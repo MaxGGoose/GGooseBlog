@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GGooseBlog.Controllers;
 
-[Authorize]
+//[Authorize]
 [Route("api/blogpost")]
 public class BlogPostApiController : Controller
 {
@@ -19,7 +19,7 @@ public class BlogPostApiController : Controller
     }
     
     [HttpPost]
-    public async Task<IActionResult> CreateBlogPost(BlogPostModel blogPost)
+    public async Task<IActionResult> CreateBlogPost([FromBody]BlogPostModel blogPost)
     {
         if (blogPost.Title != string.Empty && blogPost.Text != string.Empty)
         {
@@ -59,7 +59,7 @@ public class BlogPostApiController : Controller
     }
 
     [HttpPut("{id:int}")]
-    public async Task<IActionResult> UpdateBlogPost(BlogPostModel newBlogPost, int id)
+    public async Task<IActionResult> UpdateBlogPost([FromBody]BlogPostModel newBlogPost, int id)
     {
         var oldBlogPost = await Db.BlogPosts.FirstOrDefaultAsync(blogPost => blogPost.Id == id);
         if (oldBlogPost is not null && newBlogPost.Title != string.Empty && newBlogPost.Text != string.Empty)

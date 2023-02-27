@@ -16,9 +16,7 @@ if (builder.Environment.IsDevelopment())
         options.AddPolicy(name: corsPolicy, 
             policy =>
             {
-                policy.WithOrigins("https://localhost:7070", "http://127.0.0.1:5500");
-                policy.WithHeaders("Origin","X-Requested-With", "Content-Type", "Accept");
-                policy.WithMethods("GET", "POST", "PUT", "DELETE");
+                policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
             });
     });
 }

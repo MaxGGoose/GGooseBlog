@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GGooseBlog.Controllers;
 
-[Authorize]
+//[Authorize]
 public class AdminController : Controller
 {
     [Route("admin")]
